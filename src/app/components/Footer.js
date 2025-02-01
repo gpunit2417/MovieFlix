@@ -20,7 +20,7 @@ const Footer = () => {
                             <span className={footerStyles.logo_name}>Thapa Technical</span>
                         </div>
                         <div className={footerStyles[`media-icons`]}>
-                            <Link href="#"><i > <FaFacebookF/> </i></Link>
+                            <Link href="https://www.facebook.com/punit.goyal.904/"><i > <FaFacebookF/> </i></Link>
                             <Link href="#"><i > <FaTwitter/> </i> </Link>
                             <Link href="https://www.instagram.com/goyal_punit2417/" target="_blank"><i > <FaInstagram/>  </i></Link>
                             <Link href="https://www.linkedin.com/in/punit-goyal-643553237"><i > <FaLinkedinIn /> </i></Link>
