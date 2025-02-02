@@ -8,11 +8,16 @@ if (!MONGODB_URI) {
     )
 }
 
+if (!MONGODB_DB) {
+    throw new Error(
+        'Please define the MONGODB_DB environment variable inside .env.local'
+    )
+}
 
 let cached = global.mongoose;
 
 if (!cached) {
-    cached = global.mongoose = {con: null, promise: null}
+    cached = global.mongoose = { con: null, promise: null }
 }
 
 const dbConnect = async () => {
@@ -21,10 +26,10 @@ const dbConnect = async () => {
     }
 
 
-// If a connection does not exist, we check if a promise is already in progress. If a promise is already in progress, we wait for it to resolve to get the connection
+    // If a connection does not exist, we check if a promise is already in progress. If a promise is already in progress, we wait for it to resolve to get the connection
     if (!cached.promise) {
         const opts = {
-            bufferCommands : false
+            bufferCommands: false
         };
 
         cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
