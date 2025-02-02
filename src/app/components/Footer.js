@@ -46,7 +46,7 @@ const Footer = () => {
                             <li className={footerStyles.link_name}>Account</li>
                             <li><a href="#">Profile</a></li>
                             <li><a href="#">My account</a></li>
-                            <li><a href="#">Prefrences</a></li>
+                            <li><a href="#">Preferences</a></li>
                             <li><a href="#">Purchase</a></li>
                         </ul>
                         <ul className={footerStyles.box}>
