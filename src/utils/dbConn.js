@@ -1,6 +1,14 @@
 import mongoose from "mongoose"
+import dotenv from "dotenv";
+
+dotenv.config({ path: ".env.local" });
 
 const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_DB = process.env.MONGODB_DB;
+
+console.log(MONGODB_DB);
+console.log(MONGODB_URI);
+
 
 if (!MONGODB_URI) {
     throw new Error(
