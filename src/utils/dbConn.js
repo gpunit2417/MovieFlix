@@ -4,21 +4,12 @@ import dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 
 const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_DB = process.env.MONGODB_DB;
-
-console.log(MONGODB_DB);
-console.log(MONGODB_URI);
+// console.log(MONGODB_URI);
 
 
 if (!MONGODB_URI) {
     throw new Error(
         "Please define the MONGODB_URI environment variable inside .env.local"
-    )
-}
-
-if (!MONGODB_DB) {
-    throw new Error(
-        "Please define the MONGODB_DB environment variable inside .env.local"
     )
 }
 
