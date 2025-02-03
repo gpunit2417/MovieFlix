@@ -86,7 +86,7 @@ const ContactForm = () => {
                            value={user.email}
                            onChange={handleChange}
                            required
-                           autoComplete="off"
+                        //    autoComplete="off"
                     />
                 </label>
             </div>
@@ -100,7 +100,7 @@ const ContactForm = () => {
                            value={user.phone}
                            onChange={handleChange}
                            required
-                            autoComplete="off"
+                            // autoComplete="off"
                     />
                 </label>
             </div>
@@ -114,7 +114,7 @@ const ContactForm = () => {
                                value={user.message}
                                onChange={handleChange}
                                required
-                                autoComplete="off"
+                                // autoComplete="off"
                     />
                 </label>
             </div>
