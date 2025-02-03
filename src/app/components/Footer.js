@@ -91,13 +91,36 @@ import 'react-toastify/dist/ReactToastify.css';
 const Footer = () => {
     const [email, setEmail] = useState("");
 
-    const handleSubscribe = () => {
-        if (email.trim() === "") {
-            toast.error("Please enter a valid email address!", { position: "top-center" });
+    const handleSubscribe = async () => {
+        // if (email.trim() === "") {
+        //     toast.error("Please enter a valid email address!", { position: "top-center" });
+        //     return;
+        // }
+        // toast.success(`You have subscribed successfully with ${email}!`, { position: "top-center" });
+        // setEmail(""); // Clear input after subscribing
+
+        if (!email) {
+            toast.error("Please enter an email address");
             return;
         }
-        toast.success(`You have subscribed successfully with ${email}!`, { position: "top-center" });
-        setEmail(""); // Clear input after subscribing
+
+        try {
+            const response = await fetch("/api/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                toast.success(data.message);
+                setEmail(""); // Clear input after successful subscription
+            } else {
+                toast.error(data.message);
+            }
+        } catch (error) {
+            toast.error("Something went wrong. Please try again.");
+        }
     };
 
     return (
