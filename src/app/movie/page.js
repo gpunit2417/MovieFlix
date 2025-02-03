@@ -20,7 +20,7 @@ const Movie = async () => {
     const res = await fetch(url, options);
     const data = await res.json();
     // const main_data = data.titles;
-    console.log(data)
+    console.log(data[0].episodes[0],"this is message")
 
     return (
         <>
