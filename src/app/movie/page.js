@@ -17,26 +17,22 @@ const Movie = async () => {
         }
     };
 
-    const res = await fetch(url, options);
+    const res = await fetch(url, options); 
     const data = await res.json();
-    // const main_data = data.titles;
-    console.log(data[0].episodes[0],"this is message")
+    // Extracting episodes from each season
+    const episodes = data.flatMap(season => season.episodes);
 
     return (
-        <>
-            <section className={styles.movieSection}>
-                <div className={styles.container}>
-                    <h1>Series & Movie</h1>
-                    {/* <div className={styles.card_section}>
-                        {
-                            main_data.map((curElem) => {
-                                return <MovieCard key={curElem.id} {...curElem} />
-                            })
-                        }
-                    </div> */}
+        <section className={styles.movieSection}>
+            <div className={styles.container}>
+                <h1>Series & Movies</h1>
+                <div className={styles.card_section}>
+                    {episodes.map((episode) => (
+                        <MovieCard key={episode.episodeId} episode={episode} />
+                    ))}
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 };
 
