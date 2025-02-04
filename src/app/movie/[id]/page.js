@@ -65,8 +65,6 @@ const Page = async ({ params }) => {
 
     // Extract the first episode (since API returns an array)
     const episode = data[0]; 
-    console.log(episode.episodes);
-    
 
     // Extract image URL
     const imageUrl = episode?.interestingMoment?._342x192?.webp?.value?.url || 
