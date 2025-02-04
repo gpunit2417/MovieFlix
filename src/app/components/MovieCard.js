@@ -43,8 +43,8 @@ const MovieCard = ({ episode }) => {
     return (
         <div className={styles.card}>
             <div className={styles.card_image}>                
-                <Image 
-                    src={interestingMoment?._342x192?.webp || "/default-image.jpg"} 
+                <Image
+                    src={interestingMoment?._342x192?.webp?.value?.url || "/default-image.jpg"} 
                     alt={title} 
                     width={260} 
                     height={200} 
