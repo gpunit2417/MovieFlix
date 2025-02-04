@@ -38,7 +38,7 @@ import Link from "next/link";
 
 const MovieCard = ({ episode }) => {
     const { episodeId, title, contextualSynopsis, interestingMoment } = episode;
-    console.log(interestingMoment?._342x192?.webp);
+    console.log(interestingMoment?._342x192?.webp?.value?.url);
 
     return (
         <div className={styles.card}>
