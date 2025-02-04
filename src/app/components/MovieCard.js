@@ -38,10 +38,11 @@ import Link from "next/link";
 
 const MovieCard = ({ episode }) => {
     const { episodeId, title, contextualSynopsis, interestingMoment } = episode;
+    console.log(interestingMoment?._342x192?.webp);
 
     return (
         <div className={styles.card}>
-            <div className={styles.card_image}>
+            <div className={styles.card_image}>                
                 <Image 
                     src={interestingMoment?._342x192?.webp || "/default-image.jpg"} 
                     alt={title} 
