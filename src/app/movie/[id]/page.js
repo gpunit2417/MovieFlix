@@ -256,6 +256,7 @@
 import React from "react";
 import styles from "@/app/styles/common.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const fetchEpisodeData = async (id) => {
     const url = process.env.RAPID_KEY;
@@ -297,6 +298,9 @@ const Page = async ({ params }) => {
         return <h1 className={styles.error}>Episode not found!</h1>;
     }
 
+    // Construct Netflix Watch URL
+    const netflixWatchUrl = `https://www.netflix.com/in/title/${episode.episodeId}`;
+
     // Improved image handling with fallbacks
     const imageUrl =
         episode?.interestingMoment?._342x192?.webp?.value?.url ||
@@ -331,6 +335,10 @@ const Page = async ({ params }) => {
                     <p>
                         <strong>Runtime:</strong> {Math.floor(episode?.runtime / 60) || "N/A"} min
                     </p>
+                    {/* "Watch on Netflix" Button */}
+                    <Link href={netflixWatchUrl} target="_blank" rel="noopener noreferrer">
+                        <button className={styles.watch_button}>Watch on Netflix</button>
+                    </Link>
                 </div>
             </div>
         </div>
