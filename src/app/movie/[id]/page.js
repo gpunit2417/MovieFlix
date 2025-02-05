@@ -298,15 +298,19 @@ const Page = async ({ params }) => {
         return <h1 className={styles.error}>Episode not found!</h1>;
     }
 
-    // Construct Netflix Watch URL
-    const netflixWatchUrl = `https://www.netflix.com/in/title/${episode.episodeId}`;
+    console.log("Episode ID for Netflix Link:", episode.episodeId);
 
-    // Improved image handling with fallbacks
+    // Image Handling with Fallback
     const imageUrl =
         episode?.interestingMoment?._342x192?.webp?.value?.url ||
         episode?.backgroundImage?.url ||
         "/default-image.jpg";
- 
+
+    // Netflix Watch URL
+    const netflixWatchUrl = episode.episodeId
+        ? `https://www.netflix.com/watch/${episode.episodeId}`
+        : "https://www.netflix.com"; // Default to Netflix homepage if episodeId is missing
+
     return (
         <div className={styles.container}>
             <h2 className={styles.movie_title}>
@@ -326,15 +330,14 @@ const Page = async ({ params }) => {
                 <div>
                     <h1>{episode?.title}</h1>
                     <p>{episode?.contextualSynopsis?.text || "No description available."}</p>
-                    <p>
-                        <strong>Season:</strong> {episode?.summary?.season || "N/A"}
-                    </p>
-                    <p>
-                        <strong>Episode:</strong> {episode?.summary?.episode || "N/A"}
-                    </p>
-                    <p>
-                        <strong>Runtime:</strong> {Math.floor(episode?.runtime / 60) || "N/A"} min
-                    </p>
+                    <p><strong>Season:</strong> {episode?.summary?.season || "N/A"}</p>
+                    <p><strong>Episode:</strong> {episode?.summary?.episode || "N/A"}</p>
+                    <p><strong>Runtime:</strong> {Math.floor(episode?.runtime / 60) || "N/A"} min</p>
+                    
+                    {/* Debugging Log */}
+                    <p><strong>Netflix Episode ID:</strong> {episode.episodeId || "Not Found"}</p>
+                    <p><strong>Netflix Watch URL:</strong> <a href={netflixWatchUrl} target="_blank">{netflixWatchUrl}</a></p>
+
                     {/* "Watch on Netflix" Button */}
                     <Link href={netflixWatchUrl} target="_blank" rel="noopener noreferrer">
                         <button className={styles.watch_button}>Watch on Netflix</button>
