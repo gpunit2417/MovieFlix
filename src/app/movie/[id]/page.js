@@ -258,7 +258,7 @@ import styles from "@/app/styles/common.module.css";
 import Image from "next/image";
 
 const fetchEpisodeData = async (id) => {
-    const url = `https://netflix54.p.rapidapi.com/season/episodes/?ids=80077209%2C80117715&offset=0&limit=25&lang=en`;
+    const url = process.env.RAPID_KEY;
 
     const options = {
         method: "GET",
