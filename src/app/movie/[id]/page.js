@@ -46,7 +46,7 @@ import Image from "next/image";
 const Page = async ({ params }) => {
     const { id } = params;
 
-    const url = `https://netflix54.p.rapidapi.com/season/episodes/?ids=${id}&offset=0&limit=25&lang=en`;
+    const url = `https://netflix54.p.rapidapi.com/season/episodes/?ids=${id}%2C80117715&offset=0&limit=25&lang=en`;
 
     const options = {
         method: 'GET',
@@ -59,13 +59,19 @@ const Page = async ({ params }) => {
     const res = await fetch(url, options);
     const data = await res.json();
 
+    console.log(data);
+    
     if (!data || data.length === 0) {
         return <h1 className={styles.error}>No episode found!</h1>;
     }
 
     // Extract the first episode (since API returns an array)
-    const episode = data[0]; 
+    const episode = data[0].seasonId; 
 
+    // console.log("'''''''''''''''''''''''''''''''''''''''''''''");
+    
+    // console.log(episode);
+    
     // Extract image URL
     const imageUrl = episode?.interestingMoment?._342x192?.webp?.value?.url || 
                      episode?.backgroundImage?.url || 
