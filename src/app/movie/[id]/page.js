@@ -60,7 +60,7 @@
 //     const data = await res.json();
 
 //     // console.log(data);
-    
+
 //     if (!data || data.length === 0) {
 //         return <h1 className={styles.error}>No episode found!</h1>;
 //     }
@@ -69,9 +69,9 @@
 //     const episode = data[1].episodes; 
 
 //     // console.log("'''''''''''''''''''''''''''''''''''''''''''''");
-    
+
 //     console.log(episode);
-    
+
 //     // Extract image URL
 //     const imageUrl = episode?.interestingMoment?._342x192?.webp?.value?.url || 
 //                      episode?.backgroundImage?.url || 
@@ -129,12 +129,12 @@
 //         }
 
 //         console.log(data?.episodes?.episodeId);
-        
+
 //         // Find the specific episode by ID
 //         const episode = data.find(ep => ep.episodeId === id);
 
 //         // console.log(episode);
-        
+
 //         if (!episode) {
 //             return <h1 className={styles.error}>Episode not found!</h1>;
 //         }
@@ -293,7 +293,7 @@ const Page = async ({ params }) => {
     const episode = await fetchEpisodeData(id);
 
     console.log(episode, 'this is an episode');
-    
+
     if (!episode) {
         return <h1 className={styles.error}>Episode not found!</h1>;
     }
@@ -333,7 +333,7 @@ const Page = async ({ params }) => {
                     <p><strong>Season:</strong> {episode?.summary?.season || "N/A"}</p>
                     <p><strong>Episode:</strong> {episode?.summary?.episode || "N/A"}</p>
                     <p><strong>Runtime:</strong> {Math.floor(episode?.runtime / 60) || "N/A"} min</p>
-                    
+
                     {/* Debugging Log */}
                     <p><strong>Netflix Episode ID:</strong> {episode.episodeId || "Not Found"}</p>
                     <p><strong>Netflix Watch URL:</strong> <a href={netflixWatchUrl} target="_blank">{netflixWatchUrl}</a></p>
